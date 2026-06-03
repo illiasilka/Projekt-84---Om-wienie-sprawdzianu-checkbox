@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Kino "Galaxy"</h2>
+    <form>
+    <label for="uro">Podaj rok urodzenia</label>
+    <input type="number" id="uro">
+    <br><br>
+    <label for="reg">Akceptuje regulamin kina</label>
+    <input type="checkbox" id="reg"><br><br>
+    <input type="button" value="Sprawdz" onclick="Sprawdz()">
+</form>
+<div id="wynik"></div>
+<script>
+    function Sprawdz(){
+        let ter = Number(2026);
+        let uro = document.getElementById("uro").value;
+        let wiek = ter - uro;
+        let regu = document.getElementById("reg").checked;
+
+        if(regu == true){
+            if(uro == ""){
+                document.getElementById("wynik").innerHTML = "Podaj rok urodzenia"
+            }
+            else if(wiek <= 0 || wiek > 100){
+                document.getElementById("wynik").innerHTML = "Podano niepoprawny wiek."
+            }
+            else if(wiek < 12){
+                document.getElementById("wynik").innerHTML = "Masz " + wiek + " lat. Przysługuje ci bilet dziecięcy."
+            }
+            
+            else if(wiek >= 12 && wiek < 18){
+                document.getElementById("wynik").innerHTML = "Masz " + wiek + " lat. Przysługuje ci bilet młodzieżowy"
+            }
+            else if(wiek > 18){
+                document.getElementById("wynik").innerHTML = "Masz " + wiek + " lat. Przysługuje ci bilet normalny."
+            }
+        }
+        else{
+            document.getElementById("wynik").innerHTML = "Musisz zaakceptować regulamin."
+        }
+
+    }
+</script>
+</body>
+</html>
